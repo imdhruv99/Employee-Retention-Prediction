@@ -1,0 +1,14 @@
+Flask
+Flask-Cors
+matplotlib
+numpy
+pandas
+scikit-learn
+kneed
+xgboost
+Flask-MonitoringDashboard
+Jinja2
+Werkzeug
+itsdangerous
+certifi
+MarkupSafe

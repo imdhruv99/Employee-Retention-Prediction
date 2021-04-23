@@ -82,7 +82,7 @@ class LoadValidate:
 
                         count += 1
 
-                        shutil.mave(self.data_path+'/'+file, self.data_path+'_rejects')
+                        shutil.move(self.data_path+'/'+file, self.data_path+'_rejects')
                         self.logger.info("All missing values in columns :: %s"%file)
                         break
             

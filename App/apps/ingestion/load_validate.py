@@ -96,7 +96,7 @@ class LoadValidate:
             self.logger.exception('Exception raised while Validating Missing Values: %s' % e)
             raise e
 
-    def replacing_missing_values(self):
+    def replace_missing_values(self):
 
         try:
 

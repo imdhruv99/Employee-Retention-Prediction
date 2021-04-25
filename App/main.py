@@ -5,7 +5,7 @@ from flask_monitoringdashboard as dashboard
 import pandas as pd
 import os
 from flask_cors import CORS, cross_origin
-
+from apps.core.config import Config
 
 app = Flask(__name__)
 CORS(app)
@@ -16,7 +16,12 @@ CORS(app)
 def training_route_client():
 
     try:
-        return Response("Training Successfull")
+        
+        config = Config()
+        # get run id
+        run_id = config.training_data_path
+        # trainmodel object initialization
+        
     except ValueError:
         return Response("Error Occured! %s" % ValueError)
     except KeyError:

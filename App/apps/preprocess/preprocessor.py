@@ -149,3 +149,99 @@ class Preprocessor:
         except Exception as e:
             self.logger.exception('Exception raised while building final predictset: %s' % e)
             raise e
+    
+
+    def preprocess_trainset(self):
+
+        try:
+
+            self.logger.info("Start of preprocessing...")
+
+            # get data into pandas data frame
+            data = self.get_data()
+
+            # drop unwanted columns
+            data = self.drop_columns(data,['empid'])
+
+            # handle label encoding
+            cat_df = self.feature_encoding(data)
+            data = pd.concat([data, cat_df], axis=1)
+
+            # drop categorical column
+            data = self.drop_columns(data, ['salary'])
+
+            # check if missing values are present in the data set
+            is_null_present = self.is_null_present(data)
+
+            # if missing values are there, replace them appropriately.
+            if (is_null_present):
+                data = self.impute_missing_values(data)  # missing value imputation
+            
+            # create separate features and labels
+            self.X, self.y = self.split_features_label(data, label_name='left')
+            self.logger.info('End of Preprocessing...')
+            return self.X, self.y
+
+        except Exception:
+            self.logger.exception('Unsuccessful End of Preprocessing...')
+            raise Exception
+    
+        def preprocess_predictset(self):
+
+        try:
+            
+            self.logger.info('Start of Preprocessing...')
+           
+            # get data into pandas data frame
+            data=self.get_data()
+           
+            # drop unwanted columns
+            #data=self.drop_columns(data,['empid'])
+            # handle label encoding
+            cat_df = self.feature_encoding(data)
+            data = pd.concat([data, cat_df], axis=1)
+            
+            # drop categorical column
+            data = self.drop_columns(data, ['salary'])
+            
+            # check if missing values are present in the data set
+            is_null_present = self.is_null_present(data)
+            
+            # if missing values are there, replace them appropriately.
+            if (is_null_present):
+                data = self.impute_missing_values(data)  # missing value imputation
+
+            data = self.final_predictset(data)
+            self.logger.info('End of Preprocessing...')
+            return data
+        
+        except Exception:
+            self.logger.exception('Unsuccessful End of Preprocessing...')
+            raise Exception
+
+
+    def preprocess_predict(self,data):
+       
+        try:
+            
+            self.logger.info('Start of Preprocessing...')
+            cat_df = self.feature_encoding(data)
+            data = pd.concat([data, cat_df], axis=1)
+           
+            # drop categorical column
+            data = self.drop_columns(data, ['salary'])
+            
+            # check if missing values are present in the data set
+            is_null_present = self.is_null_present(data)
+           
+            # if missing values are there, replace them appropriately.
+            if (is_null_present):
+                data = self.impute_missing_values(data)  # missing value imputation
+
+            data = self.final_predictset(data)
+            self.logger.info('End of Preprocessing...')
+            return data
+       
+        except Exception:
+            self.logger.exception('Unsuccessful End of Preprocessing...')
+            raise Exception

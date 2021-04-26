@@ -21,7 +21,8 @@ class Preprocessor:
             self.logger.info("Start of Reading Dataset...")
             self.data = pd.read_csv(self.data_path+'_validation/InputFile.csv')
             self.logger.info("End of Reading Dataset...")
-        
+            return self.data
+            
         except Exception as e:
 
             self.logger.exception('Exception raised while reading dataset: %s'+str(e))
@@ -38,6 +39,7 @@ class Preprocessor:
             self.logger.info("Start of Droping columns...")
             self.useful_data = self.data.drop(labels = self.columns, axis=1) # drop the label specified in the columns
             self.logger.info("End of Droping columns...")
+            return self.useful_data
 
         except Exception as e:
 

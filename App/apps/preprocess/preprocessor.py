@@ -28,7 +28,7 @@ class Preprocessor:
             raise Exception()
     
 
-    def drop_column(self, data, columns):
+    def drop_columns(self, data, columns):
 
         self.data = data
         self.columns = columns
@@ -186,7 +186,7 @@ class Preprocessor:
             self.logger.exception('Unsuccessful End of Preprocessing...')
             raise Exception
     
-        def preprocess_predictset(self):
+    def preprocess_predictset(self):
 
         try:
             

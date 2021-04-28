@@ -10,7 +10,7 @@ class FileOperation:
         self.data_path = data_path
         self.logger = Logger(self.run_id, 'FileOperation', mode)
     
-    def save_mode(self, model, file_name):
+    def save_model(self, model, file_name):
 
         try:
             self.logger.info('Start of Save Models')

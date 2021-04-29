@@ -71,6 +71,6 @@ class TrainModel:
             
             self.logger.info('End of Training...')
 
-        except Exception as e:
-            self.logger.exception("Unsuccessful, Training model is end with some error:" %e)
+        except Exception:
+            self.logger.exception("Unsuccessful, Training model is end with some error")
             raise Exception

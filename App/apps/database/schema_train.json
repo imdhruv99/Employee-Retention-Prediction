@@ -1,5 +1,5 @@
 {
-    "NumberOfColumns": 10,
+    "NumberofColumns": 10,
     "ColName": {
         "empid": "INTEGER",
         "satisfaction_level": "FLOAT",

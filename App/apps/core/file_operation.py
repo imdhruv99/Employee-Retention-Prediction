@@ -1,42 +1,38 @@
-from logger import Logger
+import pickle
 import os
 import shutil
-import pickle
+from apps.core.logger import Logger
 
 class FileOperation:
 
-    def __init__(self, run_id, data_path, mode):
+
+    def __init__(self,run_id,data_path,mode):
         self.run_id = run_id
         self.data_path = data_path
         self.logger = Logger(self.run_id, 'FileOperation', mode)
-    
-    def save_model(self, model, file_name):
+
+    def save_model(self,model,file_name):
 
         try:
             self.logger.info('Start of Save Models')
-            # creating seperate directory for each cluster
-            path = os.path.join('apps/models/', file_name)
-            # remove previously existing models for each cluster
-            if os.path.isdir(path):
+            path = os.path.join('apps/models/',file_name) #create seperate directory for each cluster
+            if os.path.isdir(path): #remove previously existing models for each clusters
                 shutil.rmtree('apps/models')
                 os.makedirs(path)
             else:
-                os.makedirs(path)
-            # save model to file
-            with open(path + '/' + file_name + '.sav', 'wb') as f:
-                pickle.dump(model, f)
-            
-            self.logger.info('Model File' + file_name + 'saved')
+                os.makedirs(path) #
+            with open(path +'/' + file_name+'.sav',
+                      'wb') as f:
+                pickle.dump(model, f) # save the model to file
+            self.logger.info('Model File '+file_name+' saved')
             self.logger.info('End of Save Models')
-            return 'Success'
-        
+            return 'success'
         except Exception as e:
-
-            self.logger.exception('Exception raised  while saving the model: %s'% e)
+            self.logger.exception('Exception raised while Save Models: %s' % e)
             raise Exception()
 
     def load_model(self,file_name):
-        
+
         try:
             self.logger.info('Start of Load Model')
             with open('apps/models/' + file_name + '/' + file_name + '.sav','rb') as f:

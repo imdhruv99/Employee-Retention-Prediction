@@ -1,6 +1,6 @@
 from apps.core.logger import Logger
 from apps.core.file_operation import FileOperation
-from apps.tuning.model_tuner import ModelTurner
+from apps.tuning.model_tuner import ModelTuner
 from apps.ingestion.load_validate import LoadValidate
 from apps.preprocess.preprocessor import Preprocessor
 from apps.tuning.cluster import KMeansCluster
@@ -19,7 +19,7 @@ class TrainModel:
         self.logger = Logger(self.run_id, 'TrainModel', 'training')
         self.loadValidate = LoadValidate(self.run_id, self.data_path, 'training')
         self.preProcess = Preprocessor(self.run_id, self.data_path, 'training')
-        self.modelTurner = ModelTurner(self.run_id, self.data_path, 'training')
+        self.ModelTuner = ModelTuner(self.run_id, self.data_path, 'training')
         self.fileOperation = FileOperation(self.run_id, self.data_path, 'training')
         self.cluster = KMeansCluster(self.run_id, self.data_path)
     
@@ -64,7 +64,7 @@ class TrainModel:
                 x_train, x_test, y_train, y_test = train_test_split(cluster_features, cluster_label, test_size=0.2, random_state=0)
 
                 # getting the best model for each of the cluster
-                best_model_name, best_model = self.modelTurner.get_best_model(x_train, x_test, y_train, y_test)
+                best_model_name, best_model = self.ModelTuner.get_best_model(x_train, x_test, y_train, y_test)
 
                 # saving the best model to the directory
                 save_model = self.fileOperation.save_model(best_model, best_model_name+str(i))

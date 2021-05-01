@@ -48,7 +48,7 @@ class PredictModel:
             raise Exception
 
 
-    def single_predict_from_model(self,data):
+def single_predict_from_model(self,data):
 
         try:
             self.logger.info('Start of Prediction')

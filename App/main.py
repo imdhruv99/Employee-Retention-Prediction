@@ -15,6 +15,8 @@ CORS(app)
 
 @app.route('/', methods=['POST','GET'])
 def index_page():
+
+
     return render_template('index.html')
 
 
@@ -22,6 +24,7 @@ def index_page():
 @app.route('/training', methods=['POST'])
 @cross_origin()
 def training_route_client():
+
     try:
         config = Config()
         #get run id
@@ -42,6 +45,7 @@ def training_route_client():
 @app.route('/batchprediction', methods=['POST'])
 @cross_origin()
 def batch_prediction_route_client():
+
     try:
         config = Config()
         #get run id
@@ -63,6 +67,7 @@ def batch_prediction_route_client():
 @app.route('/prediction', methods=['POST'])
 @cross_origin()
 def single_prediction_route_client():
+
     try:
         config = Config()
         #get run id

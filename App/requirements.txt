@@ -1,12 +1,12 @@
-Flask==1.1.1 
+Flask==1.1.1
 Flask-Cors==3.0.8 
-matplotlib==3.1.2
+matplotlib==3.1.2 
 numpy==1.18.1
 pandas==0.25.3 
-scikit-learn==0.22.1
-kneed==0.5.1 
+scikit-learn==0.22.1 
+kneed==0.5.1
 xgboost==1.0.2 
-Flask-MonitoringDashboard==3.0.6 
+Flask-MonitoringDashboard==3.0.6
 Jinja2==2.11.0 
 Werkzeug==0.16.1 
 itsdangerous==1.1.0 

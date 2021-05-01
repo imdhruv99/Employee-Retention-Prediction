@@ -26,7 +26,6 @@ class DatabaseOperation:
 
     def create_table(self,database_name,table_name, column_names):
 
-
         try:
             self.logger.info('Start of Creating Table...')
             conn = self.database_connection(database_name)

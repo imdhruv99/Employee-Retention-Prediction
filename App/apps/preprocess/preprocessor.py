@@ -60,7 +60,6 @@ class Preprocessor:
 
     def impute_missing_values(self, data):
 
-
         self.data= data
         try:
             self.logger.info('Start of imputing missing values...')
@@ -199,3 +198,5 @@ class Preprocessor:
         except Exception:
             self.logger.exception('Unsuccessful End of Preprocessing...')
             raise Exception
+
+

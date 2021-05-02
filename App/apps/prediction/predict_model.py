@@ -7,6 +7,7 @@ from apps.core.file_operation import FileOperation
 class PredictModel:
 
 
+
     def __init__(self,run_id,data_path):
         self.run_id = run_id
         self.data_path = data_path
@@ -48,7 +49,7 @@ class PredictModel:
             raise Exception
 
 
-def single_predict_from_model(self,data):
+    def single_predict_from_model(self,data):
 
         try:
             self.logger.info('Start of Prediction')
